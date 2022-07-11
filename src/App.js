@@ -1,14 +1,14 @@
 import './App.css';
-import UilReact from '@iconscout/react-unicons/icons/uil-react'
 import TopButtons from './Components/TopButtons';
 import Inputs from './Components/Inputs';
 import TimeAndLocation from './Components/TimeAndLocation';
 import TemperatureAndDetail from './Components/TemperatureAndDetail';
 import Forecast from './Components/Forecast';
-import getWeatherData, { formatToLocalTime } from './services/WheaterServices';
 import getFormattedWeatherData from './services/WheaterServices';
 import { useEffect, useState } from 'react';
-import img from './assets/Fondo.png'
+import Template from './Components/Template';
+
+
 
 function App() {
 
@@ -35,10 +35,10 @@ function App() {
   }
 
   return (
-    <div className={`mx-auto max-w-screen-md mt-4 py-5 px-32 bg-gradient-to-br h-fit shadow-xl shadow-gray-400 ${formatBackground()}`}>
+    <div className={`mx-auto max-w-screen-md lg:mt-4 md:mt-4 xl:mt-4 2xl:mt-4 py-5 px-32 bg-gradient-to-br h-fit -mt-3 shadow-xl shadow-gray-400 ${formatBackground()}`}>
       {/* <div className='flex items-center justify-around'> */}
       <div>
-        <img src={img} alt="logo" className='w-12 absolute left-1/3' />
+        {/* <img src={img} alt="logo" className='w-12 absolute left-1/3' /> */}
         <TopButtons setQuery={setQuery} />
       </div>
       <Inputs  setQuery={setQuery} units={units} setUnits={setUnits} />
@@ -52,9 +52,7 @@ function App() {
           <Forecast title={"daily forecast"} items={weather.daily}/>
         </div>
       ) : (
-        <div className="flex items-center justify-center">
-          <div className="lds-ring"><div></div><div></div><div></div><div></div></div>
-        </div>
+        <Template />
       )}
     </div>
   );
